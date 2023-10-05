@@ -8,6 +8,8 @@ from .forms import ProductForm
 import pandas as pd
 from .forms import UploadFileForm
 import io
+from rest_framework import generics
+from .serializers import ProductSerializer
 
 
 # Главная страница
@@ -109,3 +111,8 @@ class ExportExcelView(View):
                                 content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
         response['Content-Disposition'] = 'attachment; filename=products.xlsx'
         return response
+
+
+class ProductListCreate(generics.ListCreateAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer

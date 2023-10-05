@@ -4,6 +4,7 @@ from store.views import HomeView, CreateProductView, ProductListView, UpdateProd
 from store.views import ProductActions
 from store.views import UploadExcelView
 from store.views import ExportExcelView
+from store.views import ProductListCreate
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -15,4 +16,5 @@ urlpatterns = [
     path('actions', ProductActions.as_view(), name='product_actions_link'),
     path('upload/', UploadExcelView.as_view(), name='upload_excel_link'),
     path('export/', ExportExcelView.as_view(), name='export_excel_link'),
+    path('products/', ProductListCreate.as_view(), name='product_list_create'),
 ]
