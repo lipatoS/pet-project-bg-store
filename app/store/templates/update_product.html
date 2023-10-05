@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block main_title %}
+<title>Редактируем продукт</title>
+{% endblock %}
+
+{% block main %}
+<div>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div>
+            <button type="submit">Подтвердить</button>
+            <a href="{% url 'product_list_link' %}">Отмена</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

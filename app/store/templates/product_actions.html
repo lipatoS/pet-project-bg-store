@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block main_title %}
+<title>действия</title>
+{% endblock %}
+
+{% block main %}
+<tr>
+    <td><a href="{% url 'product_list_link' %}">список товаров</a></td>
+    <td><a href="{% url 'product_create_link' %}">добавить новый товар</a></td>
+    <td><a href="{% url 'upload_excel_link' %}">загрузить файл с товарами</a></td>
+</tr>
+{% endblock %}

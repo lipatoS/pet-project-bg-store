@@ -1,0 +1,16 @@
+<!-- store/templates/product_list.html -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    {% block main_title %}
+    {% endblock %}
+    <!-- Подключите здесь свои CSS-файлы и JavaScript-файлы -->
+</head>
+<body>
+    <a href="{% url 'product_actions_link' %}">Работа с товарами</a>
+{% block main %}
+
+{% endblock %}
+</body>
+</html>

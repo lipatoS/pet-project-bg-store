@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block main_title %}
+<title>список товаров</title>
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <p>Загрузите файл Excel</p>
+    <form method="post" action="{% url 'upload_excel_link' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Загрузить</button>
+    </form>
+
+</div>
+<a href="{% url 'export_excel_link' %}">выгрузить excel с товарами</a>
+<div class="container">
+    <table border="1" style="width: 800px; margin: auto;">
+        <thead>
+        <tr>
+            <th>№</th>
+            <th>Название товара</th>
+            <th>Остаток на складе</th>
+            <th>Цена</th>
+            <th>Действие</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for i in object_list %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ i.name }}</td>
+            <td>{{ i.stock_quantity }}</td>
+            <td>{{ i.price }}</td>
+            <td style="text-align: center;">
+                <a href="{% url 'product_edit_link' pk=i.pk %}">Изменить</a>
+                <a href="{% url 'product_delete_link' pk=i.pk %}">Удалить</a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
